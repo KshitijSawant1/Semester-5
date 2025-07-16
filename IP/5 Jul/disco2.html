@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Random Hex Color Changer</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        transition: background-color 0.5s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        font-family: sans-serif;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+
+    <script>
+      function getRandomHexColor() {
+        const hex = Math.floor(Math.random() * 0xffffff)
+          .toString(16)
+          .padStart(6, "0");
+        return `#${hex}`;
+      }
+
+      setInterval(() => {
+        const color = getRandomHexColor();
+        document.body.style.backgroundColor = color;
+
+        // Optional: Adjust text color based on brightness
+        const brightness = parseInt(color.slice(1), 16);
+        document.body.style.color =
+          brightness > 0xffffff / 2 ? "black" : "white";
+      }, 1000);
+    </script>
+  </body>
+</html>

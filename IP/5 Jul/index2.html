@@ -1,0 +1,19 @@
+<script>
+  number = parseInt(
+    prompt("Enter a number to display its multiplication table:")
+  );
+  if (isNaN(number)) {
+    console.log("Invalid input.");
+  } else {
+    console.log(`Multiplication table for ${number}:`);
+    for (let i = 1, j = 10; i <= 10; i++, j--) {
+      output = `${number} * ${i} = ${number * i} | ${number} * ${j} = ${
+        number * j
+      }`;
+      console.log(output);
+    }
+  }
+
+
+  
+</script>

@@ -1,0 +1,126 @@
+body {
+  background: #f1f3f6;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.popup {
+  position: relative;
+  width: 320px;
+  background: #ffffff;
+  box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01),
+    0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09),
+    0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 13px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.popup:hover,
+.popup:active {
+  transform: scale(1.05); 
+  box-shadow: 0px 25px 60px rgba(0, 0, 0, 0.2);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: #ecf1fd;
+  border-radius: 5px;
+  box-shadow: 0px 0.5px 0.5px #efefef, 0px 1px 0.5px rgba(239, 239, 239, 0.5);
+}
+
+.note {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 17px;
+  color: #2b2b2f;
+}
+
+.subtitle {
+  font-weight: 600;
+  font-size: 13px;
+  color: #5f5d6b;
+}
+
+.input_field {
+  width: 100%;
+  height: 42px;
+  padding: 0 0 0 12px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #e5e5e5;
+  filter: drop-shadow(0px 1px 0px #efefef)
+    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.input_field:focus {
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 0px 1px #2b2b2f;
+  background-color: transparent;
+}
+
+.submit {
+  width: 100%;
+  height: 42px;
+  padding: 10px 18px;
+  background: linear-gradient(180deg, #4480ff 0%, #115dfc 50%, #0550ed 100%);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+}
+select.input_field {
+  appearance: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.input_field,
+select.input_field {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  background-color: #ffffff;
+}
+input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px white inset !important;
+  -webkit-text-fill-color: #2b2b2f !important;
+}
+.thankyou-link {
+  display: block;
+  text-align: center;
+  margin-top: 2px;
+  margin-bottom: 15px;
+  font-size: 10px;
+  color: #115DFC;
+  font-weight: 60;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.thankyou-link:hover {
+  color: #0e4dc4;
+  text-decoration: underline;
+}

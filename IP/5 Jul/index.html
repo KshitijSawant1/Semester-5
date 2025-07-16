@@ -1,0 +1,53 @@
+<script>
+  for (let i = 1; i <= 20; i++) {
+    if (i % 5 === 0) {
+      if (i % 3 === 0) {
+        console.log(`Number: Fizz & Buzz`);
+      }
+      console.log(`Number: Buzz`);
+    } else if (i % 3 === 0) {
+      console.log(`Number: Fizz`);
+    } else {
+      console.log(`Number: ${i}`);
+    }
+  }
+  x = prompt("Enter Value of Num 1 :");
+  y = prompt("Enter Value of Num 2 :");
+
+  numX = Number(x);
+  numY = Number(y);
+
+  alert("Value of x is " + (numX + numY));
+
+  // Prompt the user to enter a number
+  const userInput = prompt("Enter a number:");
+  // Convert the input string to a number
+  const number = parseFloat(userInput);
+  if (isNaN(number)) {
+    alert("Invalid input. Please enter a valid number.");
+  } else {
+    if (number > 0) {
+      alert("The number is positive.");
+    } else if (number < 0) {
+      alert("The number is negative.");
+    } else {
+      alert("The number is zero.");
+    }
+  }
+
+  number = parseInt(
+    prompt("Enter a number to display its multiplication table:")
+  );
+  if (isNaN(number)) {
+    console.log("Invalid input.");
+  } else {
+    console.log(`Multiplication table for ${number}:`);
+    for (let i = 1; i <= 10; i++) {
+      const result1 = number * i;
+      j = 10 - i;
+      const result2 = number * j;
+      console.log(`${number} * ${i} = ${result1}`);
+      console.log(`${number} * ${j} = ${result2}`);
+    }
+  }
+</script>

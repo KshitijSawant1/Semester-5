@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Thank You!</title>
+    <link
+      rel="icon"
+      type="image/jpg"
+      href="https://ik.imagekit.io/rhzh8en76/Helixure%20v2.0%20Assests/T1.jpg?updatedAt=1751047883365"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 100px;
+        background-color: #f4f4f4;
+      }
+
+      .card {
+        position: relative;
+        width: 220px;
+        height: 320px;
+        background: mediumturquoise;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        font-weight: bold;
+        border-radius: 15px;
+        cursor: pointer;
+        margin: auto;
+        margin-bottom: 30px;
+      }
+
+      .card::before,
+      .card::after {
+        position: absolute;
+        content: "";
+        width: 20%;
+        height: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: lightblue;
+        transition: all 0.5s;
+      }
+
+      .card::before {
+        top: 0;
+        right: 0;
+        border-radius: 0 15px 0 100%;
+      }
+
+      .card::after {
+        bottom: 0;
+        left: 0;
+        border-radius: 0 100% 0 15px;
+      }
+
+      .card:hover::before,
+      .card:hover::after {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+      }
+
+      .card:hover::after {
+        content: "Thank You!";
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        background-color: lightgreen;
+      }
+
+      .back-btn {
+        padding: 10px 20px;
+        background-color: #115dfc;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .back-btn:hover {
+        background-color: #0e4dc4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">MEMBER</div>
+    <p>Your membership has been successfully submitted.</p>
+    <button class="back-btn" onclick="window.location.href='index.html'">
+      Go Back to Home
+    </button>
+  </body>
+</html>
