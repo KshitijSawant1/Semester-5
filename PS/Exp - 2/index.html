@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Dummy Webpage</title>
+
+  <!-- Link External CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Welcome to My Webpage</h1>
+    <p>This is a dummy HTML page created for practice.</p>
+  </header>
+
+  <section>
+    <h2>About Me</h2>
+    <p>Hello! I’m learning web development using HTML, CSS, and JavaScript.</p>
+    <img src="https://via.placeholder.com/150" alt="Profile Image" />
+  </section>
+
+  <section>
+    <h2>My Hobbies</h2>
+    <ul>
+      <li>Coding</li>
+      <li>Reading</li>
+      <li>Music</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Contact Me</h2>
+    <form onsubmit="handleSubmit(event)">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <button type="submit">Submit</button>
+    </form>
+    <p id="message"></p>
+  </section>
+
+  <!-- Link External JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
