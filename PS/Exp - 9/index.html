@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Greeting App</title>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        margin: 2rem;
+      }
+      .error {
+        color: #b00020;
+      }
+    </style>
+    <script>
+      function greetUser() {
+        const input = document.getElementById("nameInput");
+        const msg = document.getElementById("greeting");
+        const err = document.getElementById("error");
+
+        const name = (input.value || "").trim();
+        err.textContent = "";
+        msg.textContent = "";
+
+        if (!name) {
+          err.textContent = "Please enter your name.";
+          input.focus();
+          return false; // prevent page reload
+        }
+
+        msg.textContent = `Hello, ${name}!`;
+        return false;
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("nameInput").focus();
+      });
+    </script>
+  </head>
+  <body>
+    <h1>PS-IV Exp - 9 : JavaScript and Selenium</h1>
+
+    <h2 data-testid="title">Simple Greeting App</h2>
+
+    <form onsubmit="return greetUser()" data-testid="form">
+      <label for="nameInput">Enter your name:</label>
+      <input type="text" id="nameInput" name="name" data-testid="name-input" />
+      <button type="submit" data-testid="greet-button">Greet</button>
+    </form>
+
+    <p id="error" class="error" data-testid="error"></p>
+    <p id="greeting" data-testid="greeting"></p>
+  </body>
+</html>

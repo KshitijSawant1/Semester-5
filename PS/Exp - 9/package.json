@@ -1,0 +1,17 @@
+{
+  "name": "exp---9",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+"scripts": {
+  "test:ui": "node test.js",
+  "serve": "npx http-server -p 8080 -c-1 ."
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "selenium-webdriver": "^4.36.0"
+  }
+}

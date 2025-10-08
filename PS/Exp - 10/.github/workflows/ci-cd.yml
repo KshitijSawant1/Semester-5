@@ -1,0 +1,52 @@
+name: ML Model CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+    tags:
+      - "v*"
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Train and test model
+        run: python train_model.py
+
+      - name: Upload trained model artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trained-model
+          path: model.joblib
+          if-no-files-found: error
+
+      - name: Deploy model (example)
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          echo "Deploying model for tag $GITHUB_REF..."
+          # e.g. aws s3 cp model.joblib s3://your-bucket/models/${GITHUB_REF#refs/tags/}/
