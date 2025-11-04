@@ -9,14 +9,20 @@
 # ==== Step 1: Import Libraries ====
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd 
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import mean_squared_error, r2_score,accuracy_score, precision_score, recall_score
 
 # ==== Step 2: Load Dataset ====
 # Using the Diabetes dataset from sklearn
 diabetes = datasets.load_diabetes()
+df = pd.DataFrame(diabetes.data, columns=diabetes.feature_names)
+df['target'] = diabetes.target
+
+# Display first 5 rows
+print(df.head())
 
 # Take only one feature (for simple linear regression)
 X = diabetes.data[:, np.newaxis, 2]  # use only the 3rd feature (BMI)
@@ -43,6 +49,13 @@ print("Slope (m):", model.coef_[0])
 print("Intercept (c):", model.intercept_)
 print("Mean Squared Error:", round(mse, 2))
 print("R² Score:", round(r2, 2))
+acc = accuracy_score(y_test, y_pred)
+prec = precision_score(y_test, y_pred, average='macro')
+rec = recall_score(y_test, y_pred, average='macro')
+
+print(f"Accuracy  : {acc:.3f}")
+print(f"Precision : {prec:.3f}")
+print(f"Recall    : {rec:.3f}")
 
 # ==== Step 7: Visualize ====
 plt.scatter(X_test, y_test, color="blue", label="Actual Data")

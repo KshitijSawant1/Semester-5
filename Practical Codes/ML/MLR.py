@@ -8,11 +8,12 @@
 
 # ---- Imports ----
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import mean_squared_error, r2_score,accuracy_score, precision_score, recall_score
 
 # ---- Load dataset (all features) ----
 diabetes = datasets.load_diabetes()
@@ -20,6 +21,11 @@ X = diabetes.data                  # shape: (n_samples, n_features=10)
 y = diabetes.target                # disease progression
 
 feature_names = diabetes.feature_names
+df = pd.DataFrame(diabetes.data, columns=diabetes.feature_names)
+df['target'] = diabetes.target
+
+# Display first 5 rows
+print(df.head())
 
 # ---- Train/test split ----
 X_train, X_test, y_train, y_test = train_test_split(
@@ -41,10 +47,17 @@ print("Multiple Linear Regression: y = β0 + Σ βj * xj")
 print("Intercept (β0):", model.intercept_)
 print("Coefficients (β):")
 for name, coef in zip(feature_names, model.coef_):
-    print(f"  {name:>8s}: {coef:.4f}")
+    print(f"  {name}: {coef}")
 
 print(f"\nMean Squared Error: {mse:.2f}")
 print(f"R² Score: {r2:.3f}")
+acc = accuracy_score(y_test, y_pred)
+prec = precision_score(y_test, y_pred, average='macro')
+rec = recall_score(y_test, y_pred, average='macro')
+
+print(f"Accuracy  : {acc:.3f}")
+print(f"Precision : {prec:.3f}")
+print(f"Recall    : {rec:.3f}")
 
 # ---- Quick visualization: Predicted vs Actual ----
 plt.scatter(y_test, y_pred, alpha=0.7)

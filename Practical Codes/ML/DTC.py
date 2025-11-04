@@ -4,17 +4,23 @@
 # IG = Entropy(parent) - [Σ ( (n_child / n_total) * Entropy(child) )]
 
 # ---- Imports ----
+
+import pandas as pd
+import matplotlib.pyplot as plt
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.metrics import accuracy_score, precision_score, recall_score
-import matplotlib.pyplot as plt
 
 # ---- Load dataset ----
 iris = datasets.load_iris()
 X = iris.data
 y = iris.target
+df = pd.DataFrame(iris.data, columns=iris.feature_names)
+df['target'] = iris.target
 
+# Display first 5 rows
+print(df.head())
 # ---- Split data ----
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 

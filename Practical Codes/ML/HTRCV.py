@@ -4,16 +4,22 @@
 # RandomizedSearchCV tests random combinations from parameter distributions to find near-optimal hyperparameters.
 
 # ---- Imports ----
-from sklearn.datasets import load_iris
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn import datasets
 from sklearn.model_selection import train_test_split, RandomizedSearchCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 from scipy.stats import randint
 
 # ---- Load dataset ----
-iris = load_iris()
+iris = datasets.load_iris()
 X = iris.data
 y = iris.target
+df = pd.DataFrame(X, columns=iris.feature_names)
+df['target'] = y
+print(df.head())
 
 # ---- Split data ----
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -27,7 +33,10 @@ param_dist = {
 }
 
 # ---- Apply RandomizedSearchCV ----
-random_search = RandomizedSearchCV(model, param_distributions=param_dist, n_iter=10, cv=5, scoring='accuracy', random_state=42)
+random_search = RandomizedSearchCV(
+    model, param_distributions=param_dist, 
+    n_iter=10, cv=5, scoring='accuracy', random_state=42
+)
 random_search.fit(X_train, y_train)
 
 # ---- Best Parameters ----
@@ -42,3 +51,13 @@ rec = recall_score(y_test, y_pred, average='macro')
 print(f"Accuracy  : {acc:.3f}")
 print(f"Precision : {prec:.3f}")
 print(f"Recall    : {rec:.3f}")
+
+# ---- Simple Visualization of Random Search Results ----
+results = pd.DataFrame(random_search.cv_results_)
+plt.figure(figsize=(6,4))
+plt.scatter(range(len(results)), results['mean_test_score'], color='teal', s=70)
+plt.title('RandomizedSearchCV Mean Accuracy per Iteration')
+plt.xlabel('Random Parameter Combination Index')
+plt.ylabel('Mean CV Accuracy')
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.show()

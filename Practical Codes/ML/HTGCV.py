@@ -4,15 +4,21 @@
 # GridSearchCV tests all parameter combinations and selects the one with highest cross-validation score.
 
 # ---- Imports ----
-from sklearn.datasets import load_iris
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn import datasets
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 
 # ---- Load dataset ----
-iris = load_iris()
+iris = datasets.load_iris()
 X = iris.data
 y = iris.target
+df = pd.DataFrame(X, columns=iris.feature_names)
+df['target'] = y
+print(df.head())
 
 # ---- Split data ----
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -41,3 +47,13 @@ rec = recall_score(y_test, y_pred, average='macro')
 print(f"Accuracy  : {acc:.3f}")
 print(f"Precision : {prec:.3f}")
 print(f"Recall    : {rec:.3f}")
+
+# ---- Simple Visualization of CV Results ----
+results = pd.DataFrame(grid.cv_results_)
+plt.figure(figsize=(6,4))
+plt.plot(results['mean_test_score'], marker='o', color='purple')
+plt.title('GridSearchCV Mean Accuracy per Parameter Set')
+plt.xlabel('Parameter Combination Index')
+plt.ylabel('Mean CV Accuracy')
+plt.grid(True)
+plt.show()
