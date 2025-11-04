@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Experiment 9 – HTML5, CSS3, JS Events</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>NWT Exp 9 : Kshitij K Sawant</h1>
+      <h3>Interactive Card – HTML5 + CSS3 + JS</h3>
+      <nav>
+        <a href="#card">Card</a>
+        <a href="#form">Form</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="card" class="card-wrapper">
+        <div class="card" id="themeCard">
+          <h2 id="cardTitle">Welcome</h2>
+          <p id="cardText">
+            Click the buttons to interact with this card. Use the form below to
+            update content.
+          </p>
+          <div class="btn-row" id="btnRow">
+            <button id="btnDark">Toggle Dark Theme</button>
+            <button id="btnCount">Increment Counter</button>
+            <span id="countBadge" class="badge">0</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="form" class="form-section">
+        <h3>Update Card Content</h3>
+        <form id="updateForm">
+          <label>
+            Title:
+            <input type="text" id="titleInput" placeholder="Enter new title" />
+          </label>
+          <label>
+            Message:
+            <input
+              type="text"
+              id="messageInput"
+              placeholder="Enter message text"
+            />
+          </label>
+          <button type="submit">Apply</button>
+        </form>
+        <p id="formHint" class="hint">
+          Form submits are prevented; content updates via JavaScript.
+        </p>
+      </section>
+
+      <section class="event-demo">
+        <h3>Event Flow Demo</h3>
+        <div id="parentBox" class="box parent">
+          Parent
+          <div id="childBox" class="box child">Child</div>
+        </div>
+        <pre id="logArea" class="log"></pre>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <small>Experiment 9 • HTML5 + CSS3 + JavaScript Events</small>
+    </footer>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
