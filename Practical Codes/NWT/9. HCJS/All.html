@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>NWT Exp 9</title>
+
+    <!-- CSS 1: Basic layout -->
+    <style>
+      body {
+        font-family: Arial;
+      }
+      header,
+      footer {
+        padding: 10px;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      main {
+        max-width: 800px;
+        margin: 20px auto;
+      }
+    </style>
+
+    <!-- CSS 2: Structure only -->
+    <style>
+      .card {
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 6px;
+      }
+      .row {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        margin-top: 8px;
+        flex-wrap: wrap;
+      }
+      button {
+        padding: 6px 10px;
+        cursor: pointer;
+      }
+      .badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px;
+      }
+      label {
+        display: block;
+        margin: 6px 0;
+      }
+      input {
+        width: 100%;
+        padding: 6px;
+        border-radius: 4px;
+      }
+      .box {
+        padding: 8px;
+        margin: 6px 0;
+        border-radius: 4px;
+        border: 1px solid black;
+      }
+
+      .log {
+        padding: 6px;
+        min-height: 60px;
+        overflow: auto;
+        font-size: 14px;
+        white-space: pre-wrap;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h2>NWT Exp 9 : Kshitij K Sawant</h2>
+      <small>HTML ~ CSS ~ JavaScript Events</small>
+    </header>
+
+    <main>
+      <!-- Card -->
+      <section class="card" id="card">
+        <h3 id="title">Welcome</h3>
+        <p id="msg">Use the buttons or form below to change this card.</p>
+        <div class="row">
+          <button id="btnCount">Count +1</button>
+          <span class="badge" id="count">0</span>
+          <button id="rbtnCount">Count -1</button>
+        </div>
+      </section>
+
+      <!-- Form -->
+      <section class="card">
+        <h4>Update Card</h4>
+        <form id="form">
+          <label>Title <input id="inTitle" placeholder="New title" /></label>
+          <label>Message <input id="inMsg" placeholder="New message" /></label>
+          <button type="submit">Apply</button>
+        </form>
+      </section>
+
+      <!-- Event Flow -->
+      <section class="card">
+        <h4>Event Flow Demo</h4>
+        <div id="parent" class="box">
+          Parent
+          <div id="child" class="box">Child</div>
+        </div>
+        <pre id="log" class="log"></pre>
+      </section>
+    </main>
+    <footer><small>Practical ~ Oral Examination</small></footer>
+    <script>
+      const $ = (id) => document.getElementById(id);
+      const btn = $("btnCount"),
+        rbtn = $("rbtnCount"),
+        cnt = $("count"),
+        form = $("form");
+      const tIn = $("inTitle"),
+        mIn = $("inMsg"),
+        title = $("title"),
+        msg = $("msg");
+      const parent = $("parent"),
+        child = $("child"),
+        log = $("log");
+
+      let n = 0;
+      btn.onclick = () => (cnt.textContent = ++n);
+      rbtn.onclick = () => (cnt.textContent = --n);
+
+      form.onsubmit = (e) => {
+        e.preventDefault();
+        if (tIn.value) title.textContent = tIn.value.trim();
+        if (mIn.value) msg.textContent = mIn.value.trim();
+        tIn.value = mIn.value = "";
+        alert("Form Submitted");
+      };
+
+      parent.addEventListener("click", () => logIt("Parent clicked"));
+      child.addEventListener("click", () => logIt("Child clicked"));
+
+      function logIt(text) {
+        log.textContent += text + "\n";
+        log.scrollTop = log.scrollHeight;
+      }
+    </script>
+  </body>
+</html>

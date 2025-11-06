@@ -1,0 +1,66 @@
+/* ===== Basic Layout ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+header,
+footer {
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+main {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 10px;
+}
+
+/* ===== Structure Only ===== */
+.card {
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 6px;
+}
+.row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+button {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+label {
+  display: block;
+  margin: 6px 0;
+}
+input {
+  width: 100%;
+  padding: 6px;
+  border-radius: 4px;
+}
+.box {
+  padding: 8px;
+  margin: 6px 0;
+  border-radius: 4px;
+  border: 1px solid black;
+}
+.log {
+  padding: 6px;
+  min-height: 60px;
+  overflow: auto;
+  font-size: 14px;
+  white-space: pre-wrap;
+  border: 1px solid black;
+}

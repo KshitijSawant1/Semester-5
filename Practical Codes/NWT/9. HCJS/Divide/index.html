@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>NWT Exp 9</title>
+    <!-- Link external stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <h2>NWT Exp 9 : Kshitij K Sawant</h2>
+      <small>HTML • CSS • JavaScript Events</small>
+    </header>
+
+    <main>
+      <!-- Card -->
+      <section class="card" id="card">
+        <h3 id="title">Welcome</h3>
+        <p id="msg">Use the buttons or form below to change this card.</p>
+        <div class="row">
+          <button id="btnCount">Count +1</button>
+          <span class="badge" id="count">0</span>
+          <button id="rbtnCount">Count -1</button>
+        </div>
+      </section>
+
+      <!-- Form -->
+      <section class="card">
+        <h4>Update Card</h4>
+        <form id="form">
+          <label>Title <input id="inTitle" placeholder="New title" /></label>
+          <label>Message <input id="inMsg" placeholder="New message" /></label>
+          <button type="submit">Apply</button>
+        </form>
+      </section>
+
+      <!-- Event Flow -->
+      <section class="card">
+        <h4>Event Flow Demo</h4>
+        <div id="parent" class="box">
+          Parent
+          <div id="child" class="box">Child</div>
+        </div>
+        <pre id="log" class="log"></pre>
+      </section>
+    </main>
+    <footer><small>Practical ~ Oral Examination</small></footer>
+    <!-- Link external JS -->
+    <script src="script.js"></script>
+  </body>
+</html>
