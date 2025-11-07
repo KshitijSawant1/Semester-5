@@ -11,6 +11,12 @@ def OR(x1, x2):
 def NOT(x):
     return 1 if x == 0 else 0
 
+def NAND(x1, x2):
+    return NOT(AND(x1, x2))
+
+def NOR(x1, x2):
+    return NOT(OR(x1, x2))
+
 def XOR(x1, x2):
     return AND(OR(x1, x2), NOT(AND(x1, x2)))
 
@@ -21,33 +27,39 @@ def XNOR(x1, x2):
 # Test using input string list
 # ======================
 
-inputs = ["00", "01", "10", "11"]
-
 print("McCulloch-Pitts Logic Gate Simulation\n")
-
-print("Inputs :", inputs, "\n")
-
-print("AND Gate:")
-for p in inputs:
-    a, b = int(p[0]), int(p[1])
-    print(f"{p} -> {AND(a, b)}")
-
-print("\nOR Gate:")
-for p in inputs:
-    a, b = int(p[0]), int(p[1])
-    print(f"{p} -> {OR(a, b)}")
-
-print("\nXOR Gate:")
-for p in inputs:
-    a, b = int(p[0]), int(p[1])
-    print(f"{p} -> {XOR(a, b)}")
-
-print("\nXNOR Gate:")
-for p in inputs:
-    a, b = int(p[0]), int(p[1])
-    print(f"{p} -> {XNOR(a, b)}")
+print("Inputs :")
+x = [0, 0, 1, 1]
+y = [0, 1, 0, 1]
+print(x)
+print(y)
 
 print("\nNOT Gate:")
-for p in ["0", "1"]:
-    a = int(p)
-    print(f"{p} -> {NOT(a)}")
+for p in [0, 1]:
+    print(f"{p} -> {NOT(p)}")
+
+print("AND Gate:")
+for p, q in zip(x, y):
+    print(f"{p},{q} -> {AND(p, q)}")
+
+
+print("\nOR Gate:")
+for p, q in zip(x, y):
+    print(f"{p},{q} -> {OR(p, q)}")
+
+print("\nNAND Gate:")
+for p, q in zip(x, y):
+    print(f"{p},{q} -> {NAND(p, q)}")
+
+print("\nNOR Gate:")
+for p, q in zip(x, y):
+    print(f"{p},{q} -> {NOR(p, q)}")
+
+print("\nXOR Gate:")
+for p, q in zip(x, y):
+    print(f"{p},{q} -> {XOR(p, q)}")
+
+print("\nXNOR Gate:")
+for p, q in zip(x, y):
+    print(f"{p},{q} -> {XNOR(p, q)}")
+

@@ -28,6 +28,13 @@
 
    * Ke and Kde normalize the input signals to fit within fuzzy inference limits.
    * Ku scales the final output signal to suitable actuator range for throttle/brake control.
+  
+| Symbol  | Full Form       | Acts On                 | Role                            | Formula                  |
+| ------- | --------------- | ----------------------- | ------------------------------- | ------------------------ |
+| **Ke**  | Error Gain      | Error (e)               | Normalizes speed difference     | e(scaled) = Ke X e       |
+| **Kde** | Derivative Gain | Change of error (de/dt) | Normalizes rate of error change | de(scaled) = Kde X de/dt |
+| **Ku**  | Output Gain     | Control signal (u)      | Denormalizes fuzzy output       | u(final) = Ku X u(fuzzy) |
+
 
 4. **ANFIS Controller Core (Fuzzy + Neural Integration)**
 
